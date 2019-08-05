@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './App.css';
 
 function App() {
+
+  const APP_KEY = 'b1ba78d0-e79b-4b02-a529-3bf0b1a75eb4';
+
+  const [info, setInfo] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://fnbr.co/api/images`)
+      .then(response => {
+        console.log(response);
+      })
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Good Evening</h1>
     </div>
   );
 }
