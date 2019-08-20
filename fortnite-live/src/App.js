@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import './App.css';
 
-function App() {
 
-  const APP_KEY = 'b1ba78d0-e79b-4b02-a529-3bf0b1a75eb4';
 
+function App(props) {
   const [info, setInfo] = useState([]);
+
+  require('dotenv').config()
+  const api_key = process.env.API_KEY
+
+  const headers = {
+    headers: {
+      "x-api-key": api_key
+    }
+  }
 
   useEffect(() => {
     axios
-      .get(`https://fnbr.co/api/images`)
+      .get(`https://fnbr.co/api/stats`, headers)
       .then(response => {
         console.log(response);
       })
@@ -18,7 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Good Evening</h1>
+      <h1>Test</h1>
     </div>
   );
 }
